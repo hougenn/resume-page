@@ -64,6 +64,10 @@ http://localhost:5173/?config=/resume.yml
 
 ```text
 resume-page/
+  .github/
+    workflows/
+      ci.yml
+      deploy-pages.yml
   public/
     favicon.svg
     iconfont/
@@ -71,6 +75,7 @@ resume-page/
   src/
     main.ts
     styles.css
+  vite.config.ts
   resume.yml
   index.html
   package.json
@@ -82,3 +87,17 @@ resume-page/
 - `npm run dev`: 启动开发环境
 - `npm run build`: 构建生产包
 - `npm run preview`: 本地预览生产包
+
+## GitHub Pages 部署
+
+项目已包含 GitHub Actions 自动部署配置：`/Users/hg/workspace/resume-page/.github/workflows/deploy-pages.yml`。
+
+首次启用请在仓库设置中执行：
+
+1. 打开 `Settings -> Pages`
+2. `Build and deployment` 的 `Source` 选择 `GitHub Actions`
+3. 推送到 `main` 分支后，等待 `Deploy Pages` 工作流完成
+
+部署成功后页面地址为：
+
+- [https://hougenn.github.io/resume-page/](https://hougenn.github.io/resume-page/)

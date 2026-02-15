@@ -128,7 +128,7 @@ honors:
 openSource:
   enabled: true
   items:
-    - name: resume-template
+    - name: resume-page
       url: https://github.com/hougenn/resume-page
       stars: "520"
       description: YAML 驱动的在线简历模板，支持 Markdown 和 PDF 导出。

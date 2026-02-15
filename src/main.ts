@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { marked } from 'marked';
 import './styles.css';
+import embeddedResumeYaml from '../resume.yml?raw';
 
 type ModuleKey =
   | 'education'
@@ -216,24 +217,34 @@ async function bootstrap(): Promise<void> {
 
 async function loadConfig(): Promise<unknown> {
   const query = new URLSearchParams(window.location.search);
-  const fromQuery = query.get('config');
-  const candidatePaths = [fromQuery, '/resume.yml', '/resume.yaml'].filter(
-    (value): value is string => Boolean(value)
-  );
+  const fromQuery = query.get('config')?.trim();
+  if (fromQuery) {
+    const candidates = Array.from(
+      new Set([
+        fromQuery,
+        `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/${fromQuery.replace(/^\/+/, '')}`
+      ])
+    );
 
-  for (const path of candidatePaths) {
-    const result = await fetch(path, { cache: 'no-store' });
-    if (!result.ok) {
-      continue;
+    for (const path of candidates) {
+      const result = await fetch(path, { cache: 'no-store' });
+      if (!result.ok) {
+        continue;
+      }
+      const text = await result.text();
+      if (!text.trim()) {
+        continue;
+      }
+      return parseYaml(text);
     }
-    const text = await result.text();
-    if (!text.trim()) {
-      continue;
-    }
-    return parseYaml(text);
+
+    throw new Error(`未找到指定配置文件: ${fromQuery}`);
   }
 
-  throw new Error('未找到可用配置文件，请提供 resume.yml');
+  if (!embeddedResumeYaml.trim()) {
+    throw new Error('未找到可用配置文件，请提供 resume.yml');
+  }
+  return parseYaml(embeddedResumeYaml);
 }
 
 function normalizeConfig(raw: unknown): NormalizedResumeConfig {
