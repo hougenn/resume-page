@@ -1,0 +1,137 @@
+site:
+  title: 李明 | 后端开发工程师
+  themeColor: "#111111"
+  pdfFileName: 李明-后端开发工程师-简历.pdf
+  order:
+    - skills
+    - work
+    - projects
+    - profile
+    - honors
+    - openSource
+    - education
+  moduleTitles:
+    skills: 专业技能
+    work: 工作经历
+    projects: 项目经历
+    profile: 自我评价
+    honors: 荣誉奖项
+    openSource: 开源经历
+    education: 教育经历
+
+basic:
+  name: 李明
+  gender: 男
+  age: 27岁
+  position: 后端开发工程师
+  workPeriod:
+    start: 2020-07
+    end: 至今
+  contacts:
+    wechat: liming_dev_01
+    phone: 13800138000
+    email: liming@example.com
+  educationSummary:
+    raw: 理工大学-软件工程 / 本科 · 2020年毕业
+  addressLinks:
+    - label: 个人链接
+      url: https://example.com
+
+education:
+  enabled: true
+  items:
+    - school: 理工大学
+      start: 2016-09
+      end: 2020-06
+      gpa: 3.6/4.0
+      major: 软件工程
+      rank: 前15%
+      degree: 本科
+      courses:
+        - name: 数据结构与算法
+          credit: 4
+        - name: 计算机网络
+          credit: 3
+
+skills:
+  enabled: true
+  listStyle: unordered
+  hideIndex: false
+  items:
+    - 熟悉 `Java`、`Spring Boot`、`MySQL`、`Redis`、`Kafka`
+    - 具备高并发接口优化和服务治理经验
+    - 熟悉容器化部署与持续交付流程（`Docker`、`Jenkins`）
+    - 能够独立完成需求分析、方案设计与落地
+
+work:
+  enabled: true
+  items:
+    - company: 星河科技（上海）有限公司
+      time: 2022-03 ~ 至今
+      position: 高级后端开发工程师
+      achievements:
+        - 负责订单与结算服务重构，核心接口 P99 时延降低 35%
+        - 设计缓存一致性方案，线上稳定性显著提升
+        - 搭建服务监控告警体系，平均故障恢复时长缩短至 10 分钟
+    - company: 云帆信息技术有限公司
+      time: 2020-07 ~ 2022-02
+      position: 后端开发工程师
+      achievements:
+        - 独立交付用户中心模块，服务 100 万+ 活跃用户
+        - 推动慢 SQL 治理，关键查询耗时降低 60%
+
+projects:
+  enabled: true
+  items:
+    - name: 智能客服中台
+      time: 2024-05 ~ 2025-01
+      description: |
+        面向企业客服场景的统一中台，支持知识库问答、工单流转、自动分配。
+      responsibilities:
+        - "**流式响应架构：** 基于 SSE 与异步队列实现流式返回，首包响应控制在 120ms 内。"
+        - "**服务稳定性保障：** 增加熔断、限流与降级机制，提升高峰期可用性。"
+        - "**知识检索优化：** 引入向量检索后，问题命中率提升 28%。"
+      techStack:
+        - Java
+        - Spring Boot
+        - Redis
+        - Kafka
+        - Elasticsearch
+
+    - name: 供应链协同平台
+      time: 2023-03 ~ 2024-04
+      description: |
+        打通采购、库存、物流和结算流程，提升供应链协同效率。
+      responsibilities:
+        - "**流程引擎设计：** 抽象审批节点模型，支持多种业务流程快速配置。"
+        - "**性能优化：** 通过分库分表与异步处理提升批量任务吞吐。"
+      techStack:
+        - Java
+        - Spring Cloud
+        - MySQL
+        - Redis
+
+profile:
+  enabled: true
+  content: |
+    5 年后端开发经验，擅长业务抽象、系统设计和工程化落地。
+    关注性能与稳定性，能够在复杂业务场景中快速推进方案实施。
+
+honors:
+  enabled: true
+  items:
+    - name: 年度优秀员工
+      time: "2024"
+    - name: 技术创新奖
+      time: "2023"
+
+openSource:
+  enabled: true
+  items:
+    - name: resume-template
+      url: https://github.com/hougenn/resume-page
+      stars: "520"
+      description: YAML 驱动的在线简历模板，支持 Markdown 和 PDF 导出。
+      achievements:
+        - 负责整体架构设计与配置规范制定
+        - 完成分页导出策略，避免 PDF 内容截断
